@@ -1,0 +1,26 @@
+<h2><%= @list.name %></h2>
+<h5>Bookmarks</h5>
+<ul class="container movies-container">
+<% @list.movies.each do |movie| %>
+  <li>
+    <div class="card" style="width: 18rem;">
+      <img class="card-img-top" src="<%= movie.poster_url %>" alt="Card image cap">
+      <div class="card-body">
+        <h5 class="card-title"><%= movie.title %> | <%= movie.rating %></h5>
+        <p class="card-text"><%= movie.overview %></p>
+      </div>
+
+      <ul class="list-group list-group-flush">
+          <li class="list-group-item">
+            <%= movie.bookmarks.first.comment %>
+            <%= link_to "Delete comment", list_bookmark_path(movie.bookmarks.first),
+            data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+          </li>
+      </ul>
+
+    </div>
+  </li>
+<% end %>
+</ul>
+
+<%= link_to "New bookmark", new_list_bookmark_path(@list) %>
