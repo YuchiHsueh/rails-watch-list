@@ -12,9 +12,8 @@
 
       <ul class="list-group list-group-flush">
           <li class="list-group-item">
-            <%= movie.bookmarks.first.comment %>
-            <%= link_to "Delete comment", list_bookmark_path(movie.bookmarks.first),
-            data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+            <% bookmark = Bookmark.find_by(list: @list, movie: movie) %>
+            <%= link_to "Delete", bookmark_path(bookmark), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, method: :delete %>
           </li>
       </ul>
 
