@@ -1,3 +1,6 @@
+*{
+
+}
 .movies-container{
   display: flex;
 }
@@ -17,4 +20,21 @@ ul {
   text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
   border-radius: 5px;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
+}
+
+.navbar {
+  padding: 20px;
+  margin-bottom: 20px;
+}
+.index-li {
+  margin-bottom: 20px;
+}
+.row {
+  display: flex;
+}
+.comment-list {
+  padding-bottom: 10px;
+}
+h5{
+  padding: 10px
 }
