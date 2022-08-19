@@ -1,4 +1,7 @@
 <h2><%= @list.name %></h2>
+<% @list.photos.each do |photo| %>
+  <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
+<% end %>
 <h5>Bookmarks</h5>
 <ul class="container movies-container">
 <% @list.movies.each do |movie| %>
@@ -13,6 +16,7 @@
       <ul class="list-group list-group-flush">
           <li class="list-group-item">
             <% bookmark = Bookmark.find_by(list: @list, movie: movie) %>
+            <p><%= bookmark.comment %></p>
             <%= link_to "Delete", bookmark_path(bookmark), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, method: :delete %>
           </li>
       </ul>
@@ -21,5 +25,15 @@
   </li>
 <% end %>
 </ul>
+<ul>
+  <li>
+    <h6>
+      <% @list.reviews.each do |review| %>
+        <%= review.comment %>
+      <% end %>
+    </h6>
 
+  </li>
+</ul>
+<%= render "reviews/form"  %>
 <%= link_to "New bookmark", new_list_bookmark_path(@list) %>
